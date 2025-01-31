@@ -1,5 +1,8 @@
 FROM n8nio/n8n
 
+# Switch to root user to install packages
+USER root
+
 # Install Chromium and dependencies for Puppeteer (Use apk for Alpine)
 RUN apk add --no-cache \
   chromium \
@@ -16,6 +19,9 @@ RUN apk add --no-cache \
   libasound2 \
   atk \
   gtk+3.0
+
+# Switch back to node user for security
+USER node
 
 # Install Puppeteer
 RUN npm install -g puppeteer@latest
