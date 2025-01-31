@@ -3,7 +3,7 @@ FROM n8nio/n8n
 # Switch to root user to install packages
 USER root
 
-# Install Chromium and dependencies for Puppeteer (Use apk for Alpine)
+# Install Chromium and dependencies for Puppeteer (Fixed Alpine package names)
 RUN apk add --no-cache \
   chromium \
   nss \
@@ -14,9 +14,9 @@ RUN apk add --no-cache \
   libxcursor \
   libxdamage \
   libxrandr \
-  libgbm \
-  libpango \
-  libasound2 \
+  mesa-dri-gallium \
+  pango \
+  alsa-lib \
   atk \
   gtk+3.0
 
